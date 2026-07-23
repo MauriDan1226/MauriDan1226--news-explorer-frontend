@@ -4,12 +4,13 @@
   flex-grow: 1;
 }
 
-/* Hero de búsqueda: fondo oscuro que continúa el del header. */
+/* Hero de búsqueda: cielo estrellado (imagen del UI Kit) sobre fondo oscuro. */
 .search {
   background-color: var(--color-black);
-  /* Placeholder de imagen de fondo; sustituir por la del UI Kit:
-     background-image: url('../../images/hero.jpg');
-     background-size: cover; background-position: center; */
+  background-image: url('../../images/hero-bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--color-white);
 }
 
@@ -54,6 +55,11 @@
 }
 
 @media screen and (max-width: 620px) {
+  .search {
+    /* Versión más ligera del fondo para móviles. */
+    background-image: url('../../images/hero-bg-mobile.webp');
+  }
+
   .search__container {
     padding-top: 30px;
     padding-bottom: 30px;

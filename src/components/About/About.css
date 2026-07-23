@@ -20,10 +20,6 @@
   object-fit: cover;
 }
 
-.about__avatar_placeholder {
-  background: linear-gradient(135deg, var(--color-gray-light), var(--color-gray));
-}
-
 .about__title {
   margin: 0 0 24px;
   font-family: var(--font-title);
