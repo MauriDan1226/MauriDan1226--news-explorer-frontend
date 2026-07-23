@@ -1,25 +1,18 @@
 /* ==========================================================================
-   fonts.css — Fuentes de terceros conectadas con @font-face (formato WOFF)
+   fonts.css — Fuentes de terceros conectadas con @font-face (WOFF y WOFF2)
    --------------------------------------------------------------------------
-   INSTRUCCIONES:
-   1. Coloca los archivos .woff (y .woff2 si los tienes) en esta misma carpeta:
-        src/vendor/fonts/
-      Fuentes del UI Kit de News Explorer (confirmadas en el .fig):
-        Roboto, Roboto Slab, Source Sans Pro e Inter.
-      Descárgalas desde Google Fonts o desde el material del proyecto.
-   2. Descomenta el @import en src/index.css:
-        @import './vendor/fonts/fonts.css';
-   3. Ajusta los nombres de archivo de abajo si difieren.
-
-   Nota: se usa `font-display: swap` para evitar texto invisible mientras
-   carga la fuente (mejora el rendimiento percibido).
+   Fuentes del UI Kit de News Explorer (confirmadas en el .fig):
+     Roboto, Roboto Slab, Source Sans Pro e Inter.
+   Archivos open-source (OFL / Apache) incluidos en esta misma carpeta.
+   Se ofrece woff2 (moderno, más ligero) con woff como alternativa, y
+   `font-display: swap` para evitar texto invisible mientras cargan.
    ========================================================================== */
 
 /* ---------- Roboto (texto de la interfaz) ---------- */
 @font-face {
   font-family: 'Roboto';
-  src: url('./Roboto-Regular.woff2') format('woff2'),
-    url('./Roboto-Regular.woff') format('woff');
+  src: url('./roboto-latin-400-normal.woff2') format('woff2'),
+    url('./roboto-latin-400-normal.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,8 +20,8 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('./Roboto-Medium.woff2') format('woff2'),
-    url('./Roboto-Medium.woff') format('woff');
+  src: url('./roboto-latin-500-normal.woff2') format('woff2'),
+    url('./roboto-latin-500-normal.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -36,8 +29,8 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('./Roboto-Bold.woff2') format('woff2'),
-    url('./Roboto-Bold.woff') format('woff');
+  src: url('./roboto-latin-700-normal.woff2') format('woff2'),
+    url('./roboto-latin-700-normal.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -46,8 +39,8 @@
 /* ---------- Roboto Slab (títulos) ---------- */
 @font-face {
   font-family: 'Roboto Slab';
-  src: url('./RobotoSlab-Normal.woff2') format('woff2'),
-    url('./RobotoSlab-Normal.woff') format('woff');
+  src: url('./roboto-slab-latin-400-normal.woff2') format('woff2'),
+    url('./roboto-slab-latin-400-normal.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -55,8 +48,8 @@
 
 @font-face {
   font-family: 'Roboto Slab';
-  src: url('./RobotoSlab-Bold.woff2') format('woff2'),
-    url('./RobotoSlab-Bold.woff') format('woff');
+  src: url('./roboto-slab-latin-700-normal.woff2') format('woff2'),
+    url('./roboto-slab-latin-700-normal.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -65,8 +58,8 @@
 /* ---------- Source Sans Pro (fecha y texto de las tarjetas) ---------- */
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('./SourceSansPro-Regular.woff2') format('woff2'),
-    url('./SourceSansPro-Regular.woff') format('woff');
+  src: url('./source-sans-pro-latin-400-normal.woff2') format('woff2'),
+    url('./source-sans-pro-latin-400-normal.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -74,8 +67,8 @@
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('./SourceSansPro-Bold.woff2') format('woff2'),
-    url('./SourceSansPro-Bold.woff') format('woff');
+  src: url('./source-sans-pro-latin-700-normal.woff2') format('woff2'),
+    url('./source-sans-pro-latin-700-normal.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -84,8 +77,8 @@
 /* ---------- Inter (etiquetas de formulario / detalles) ---------- */
 @font-face {
   font-family: 'Inter';
-  src: url('./Inter-Regular.woff2') format('woff2'),
-    url('./Inter-Regular.woff') format('woff');
+  src: url('./inter-latin-400-normal.woff2') format('woff2'),
+    url('./inter-latin-400-normal.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -93,8 +86,8 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('./Inter-Bold.woff2') format('woff2'),
-    url('./Inter-Bold.woff') format('woff');
+  src: url('./inter-latin-700-normal.woff2') format('woff2'),
+    url('./inter-latin-700-normal.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

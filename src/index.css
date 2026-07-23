@@ -8,7 +8,7 @@
    ========================================================================== */
 
 @import './vendor/normalize.css';
-/* @import './vendor/fonts/fonts.css'; */ /* TODO: activar tras agregar los .woff */
+@import './vendor/fonts/fonts.css';
 
 :root {
   /* Colores */
