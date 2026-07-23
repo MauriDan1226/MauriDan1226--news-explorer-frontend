@@ -9,9 +9,10 @@ dist
 dist-ssr
 *.local
 
-# Editor / OS
+# Editor / OS / herramientas
 .vscode/*
 !.vscode/extensions.json
 .idea
+.claude/
 .DS_Store
 Thumbs.db
