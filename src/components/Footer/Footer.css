@@ -47,9 +47,14 @@
 }
 
 .footer__social {
-  font-family: var(--font-primary);
-  font-size: 16px;
-  color: var(--color-black);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__social-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 @media screen and (max-width: 620px) {

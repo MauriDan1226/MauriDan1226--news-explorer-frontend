@@ -15,7 +15,7 @@
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.popup_opened {
+.popup.popup_opened {
   visibility: visible;
   opacity: 1;
 }
@@ -42,26 +42,15 @@
   width: 40px;
   height: 40px;
   background-color: transparent;
+  background-image: url('../../images/icon-close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
-.popup__close::before,
-.popup__close::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 28px;
-  height: 3px;
-  background-color: var(--color-white);
-  transition: background-color var(--transition-fast);
-}
-
-.popup__close::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.popup__close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+.popup__close:hover {
+  transform: scale(1.1);
 }
 
 .popup__title {

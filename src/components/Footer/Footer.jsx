@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../utils/constants.js';
+import githubIcon from '../../images/icon-github.svg';
+import facebookIcon from '../../images/icon-facebook.svg';
 import './Footer.css';
 
 // Pie de página: copyright + enlaces de navegación y redes sociales.
@@ -39,9 +41,8 @@ function Footer() {
                 className="footer__social link"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub"
               >
-                GitHub
+                <img className="footer__social-icon" src={githubIcon} alt="GitHub" />
               </a>
             </li>
             <li className="footer__item">
@@ -50,9 +51,8 @@ function Footer() {
                 className="footer__social link"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Facebook"
               >
-                Facebook
+                <img className="footer__social-icon" src={facebookIcon} alt="Facebook" />
               </a>
             </li>
           </ul>

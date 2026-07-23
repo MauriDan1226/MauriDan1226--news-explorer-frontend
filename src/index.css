@@ -86,7 +86,9 @@
 .button {
   border: none;
   cursor: pointer;
-  background: transparent;
+  /* Usar el longhand (no el shorthand `background`) para no resetear
+     background-image en botones que usan un icono SVG de fondo. */
+  background-color: transparent;
   font-family: inherit;
   transition: opacity var(--transition-fast), background-color var(--transition-fast);
 }

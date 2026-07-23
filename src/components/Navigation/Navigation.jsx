@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../utils/constants.js';
+import logoutIcon from '../../images/icon-logout.svg';
 import './Navigation.css';
 
 // Menú de navegación. El enlace "Artículos guardados" solo aparece con sesión
@@ -32,6 +33,14 @@ function Navigation({ isLoggedIn, onSignInClick, onSignOutClick }) {
             onClick={isLoggedIn ? onSignOutClick : onSignInClick}
           >
             {isLoggedIn ? 'Cerrar sesión' : 'Iniciar sesión'}
+            {isLoggedIn && (
+              <img
+                className="navigation__auth-icon"
+                src={logoutIcon}
+                alt=""
+                aria-hidden="true"
+              />
+            )}
           </button>
         </li>
       </ul>

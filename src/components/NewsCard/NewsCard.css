@@ -63,13 +63,15 @@
   opacity: 1;
 }
 
-/* Placeholder de iconos (sustituir por SVG del UI Kit vía background-image). */
-.news-card__action_type_save::after {
-  content: '🔖';
+/* Iconos SVG del botón de acción. */
+.news-card__action_type_save {
+  background-image: url('../../images/icon-bookmark.svg');
+  background-size: 24px;
 }
 
-.news-card__action_type_delete::after {
-  content: '🗑';
+.news-card__action_type_delete {
+  background-image: url('../../images/icon-trash.svg');
+  background-size: 24px;
 }
 
 .news-card__tooltip {
