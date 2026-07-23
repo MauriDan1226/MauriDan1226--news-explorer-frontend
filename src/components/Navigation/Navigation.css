@@ -1,0 +1,76 @@
+/* Navigation — menú horizontal del encabezado. */
+
+.navigation__list {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navigation__link {
+  position: relative;
+  display: inline-block;
+  padding: 30px 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+/* Microanimación: subrayado que aparece en hover y en la ruta activa. */
+.navigation__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-white);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-fast);
+}
+
+.navigation__link:hover::after,
+.navigation__link_active::after {
+  transform: scaleX(1);
+}
+
+.navigation__auth-button {
+  min-width: 176px;
+  padding: 12px 20px;
+  border: 1px solid var(--color-white);
+  border-radius: 100px;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--color-white);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.navigation__auth-button:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  opacity: 1;
+}
+
+@media screen and (max-width: 620px) {
+  .navigation__list {
+    gap: 8px;
+  }
+
+  .navigation__link {
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  .navigation__link::after {
+    bottom: 10px;
+  }
+
+  .navigation__auth-button {
+    min-width: auto;
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+}
