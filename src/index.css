@@ -21,9 +21,15 @@
   --color-error: #ff0000;
   --color-overlay: rgba(0, 0, 0, 0.5);
 
-  /* Tipografías (con fallbacks del sistema hasta cargar los .woff) */
+  /* Tipografías del UI Kit (con fallbacks del sistema hasta cargar los .woff).
+     Roles según el diseño de Figma:
+       - primary: Roboto        -> navegación, botones, subtítulos, UI general
+       - title:   Roboto Slab   -> logo y títulos (hero, secciones, tarjetas)
+       - text:    Source Sans Pro -> fecha, texto y fuente de las NewsCard
+       - alt:     Inter         -> etiquetas de formulario y detalles pequeños */
   --font-primary: 'Roboto', 'Segoe UI', Arial, sans-serif;
   --font-title: 'Roboto Slab', 'Times New Roman', serif;
+  --font-text: 'Source Sans Pro', 'Segoe UI', Arial, sans-serif;
   --font-alt: 'Inter', 'Segoe UI', Arial, sans-serif;
 
   /* Layout */

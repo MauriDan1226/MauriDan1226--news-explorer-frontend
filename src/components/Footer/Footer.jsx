@@ -10,7 +10,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer__container container">
         <p className="footer__copyright">
-          © {year} Supersite. Desarrollado durante el curso de TripleTen.
+          © {year} Supersite, desarrollado con News API.
         </p>
 
         <nav className="footer__nav" aria-label="Enlaces del pie de página">

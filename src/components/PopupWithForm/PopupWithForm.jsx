@@ -18,9 +18,9 @@ function PopupWithForm({ name, isOpen, onClose, onSubmit, onSwitch, children }) 
   }, [isOpen, onClose]);
 
   const isSignup = name === 'signup';
-  const title = isSignup ? 'Regístrate' : 'Inicia sesión';
-  const submitLabel = isSignup ? 'Regístrate' : 'Inicia sesión';
-  const switchLabel = isSignup ? 'Inicia sesión' : 'Regístrate';
+  const title = isSignup ? 'Inscribirse' : 'Inicia sesión';
+  const submitLabel = isSignup ? 'Inscribirse' : 'Inicia sesión';
+  const switchLabel = isSignup ? 'Inicia sesión' : 'Inscribirse';
 
   function handleSubmit(event) {
     event.preventDefault();

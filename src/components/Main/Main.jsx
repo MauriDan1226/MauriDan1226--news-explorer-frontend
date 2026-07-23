@@ -14,7 +14,8 @@ function Main({ isLoading, isLoggedIn, articles }) {
         <div className="search__container container">
           <h1 className="search__title">¿Qué está pasando en el mundo?</h1>
           <p className="search__subtitle">
-            Encuentra noticias sobre cualquier tema y guárdalas en tu cuenta personal.
+            Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
+            cuenta personal.
           </p>
           <SearchForm />
         </div>

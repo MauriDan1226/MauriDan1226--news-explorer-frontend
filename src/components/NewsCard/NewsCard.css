@@ -101,7 +101,7 @@
 
 .news-card__date {
   margin-bottom: 12px;
-  font-family: var(--font-alt);
+  font-family: var(--font-text);
   font-size: 18px;
   line-height: 1.35;
   color: var(--color-gray);
@@ -118,7 +118,7 @@
 
 .news-card__text {
   margin: 0 0 18px;
-  font-family: var(--font-primary);
+  font-family: var(--font-text);
   font-size: 16px;
   line-height: 1.375;
   color: var(--color-black);
@@ -126,7 +126,7 @@
 
 .news-card__source {
   margin-top: auto;
-  font-family: var(--font-alt);
+  font-family: var(--font-text);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.25;
