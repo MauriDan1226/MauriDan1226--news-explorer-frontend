@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer.jsx';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import { ROUTES } from '../../utils/constants.js';
+import { exampleArticles } from '../../utils/mockArticles.js';
 import './App.css';
 
 // Componente raíz (funcional). Mantiene el estado global mínimo de la maqueta
@@ -15,8 +16,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activePopup, setActivePopup] = useState(null); // 'signin' | 'signup' | null
   const [isLoading] = useState(false);
-  const [articles] = useState([]);
-  const [savedArticles] = useState([]);
+  // Datos de ejemplo del diseño para poblar la maqueta (Etapa 1.1).
+  const [articles] = useState(exampleArticles);
+  const [savedArticles] = useState(exampleArticles);
 
   function handleOpenPopup(name) {
     setActivePopup(name);
