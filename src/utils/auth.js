@@ -1,23 +1,17 @@
-// Autenticación (mock local basado en localStorage).
+// Autenticación contra una API REST (mockapi.io).
 //
-// Permite registrar e iniciar sesión sin backend, para que el flujo funcione en
-// la demo. Las funciones devuelven promesas a propósito, de modo que migrar a una
-// API real (mockapi.io con VITE_AUTH_API_URL, o un backend propio) sea directo:
-// bastará cambiar el cuerpo por llamadas `fetch` sin tocar los componentes.
+// mockapi es un CRUD de prueba: no valida contraseñas ni emite tokens, así que
+// el registro comprueba que el email no exista y el login descarga el usuario por
+// email y compara la contraseña en el cliente. La sesión se guarda en localStorage.
+// Cuando exista un backend real, solo hay que cambiar este módulo.
 
-const USERS_KEY = 'news-explorer.users';
+import { AUTH_API_URL } from './constants.js';
+
 const SESSION_KEY = 'news-explorer.session';
 
-function readUsers() {
-  try {
-    return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
-  } catch {
-    return [];
-  }
-}
-
-function writeUsers(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+function checkResponse(res) {
+  if (res.ok) return res.json();
+  return Promise.reject(new Error(`Error ${res.status}`));
 }
 
 // Nunca exponemos la contraseña fuera de este módulo.
@@ -25,44 +19,55 @@ function publicUser({ id, name, email }) {
   return { id, name, email };
 }
 
-export function register({ name, email, password }) {
-  return new Promise((resolve, reject) => {
-    const users = readUsers();
-    const exists = users.some((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (exists) {
-      reject(new Error('Ya existe una cuenta con este correo electrónico.'));
-      return;
-    }
-    const user = { id: Date.now().toString(), name, email, password };
-    users.push(user);
-    writeUsers(users);
-    resolve(publicUser(user));
-  });
+function saveSession(user) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(publicUser(user)));
 }
 
-export function login({ email, password }) {
-  return new Promise((resolve, reject) => {
-    const user = readUsers().find(
-      (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password
-    );
-    if (!user) {
-      reject(new Error('Correo electrónico o contraseña incorrectos.'));
-      return;
-    }
-    localStorage.setItem(SESSION_KEY, user.id);
-    resolve(publicUser(user));
-  });
+// Busca usuarios por email. Filtra en el cliente por coincidencia exacta y tolera
+// el 404 que mockapi devuelve cuando no hay resultados.
+async function findUsersByEmail(email) {
+  const res = await fetch(`${AUTH_API_URL}/users?email=${encodeURIComponent(email)}`);
+  if (res.status === 404) return [];
+  if (!res.ok) throw new Error(`Error ${res.status}`);
+  const data = await res.json();
+  const list = Array.isArray(data) ? data : [];
+  return list.filter((u) => (u.email || '').toLowerCase() === email.toLowerCase());
+}
+
+export async function register({ name, email, password }) {
+  const existing = await findUsersByEmail(email);
+  if (existing.length > 0) {
+    throw new Error('Ya existe una cuenta con este correo electrónico.');
+  }
+  const created = await fetch(`${AUTH_API_URL}/users`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, password }),
+  }).then(checkResponse);
+  saveSession(created);
+  return publicUser(created);
+}
+
+export async function login({ email, password }) {
+  const users = await findUsersByEmail(email);
+  const user = users.find((u) => u.password === password);
+  if (!user) {
+    throw new Error('Correo electrónico o contraseña incorrectos.');
+  }
+  saveSession(user);
+  return publicUser(user);
 }
 
 export function logout() {
   localStorage.removeItem(SESSION_KEY);
 }
 
-// Devuelve el usuario de la sesión activa (o null). Se lee de forma síncrona para
-// poder restaurar la sesión antes del primer render y evitar parpadeos.
+// Devuelve el usuario de la sesión activa (o null), leído de forma síncrona para
+// restaurar la sesión antes del primer render y evitar parpadeos/redirecciones.
 export function getCurrentUser() {
-  const id = localStorage.getItem(SESSION_KEY);
-  if (!id) return null;
-  const user = readUsers().find((u) => u.id === id);
-  return user ? publicUser(user) : null;
+  try {
+    return JSON.parse(localStorage.getItem(SESSION_KEY)) || null;
+  } catch {
+    return null;
+  }
 }

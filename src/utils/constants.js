@@ -10,8 +10,12 @@ export const NEWS_API = {
   pageSize: 100,
 };
 
-// API propia (backend del proyecto) para autenticación y artículos guardados.
-export const MAIN_API_URL = 'http://localhost:3000';
+// API de autenticación (registro/login). Se usa una API temporal creada en
+// mockapi.io mientras se decide si construir un backend propio. Se puede
+// sobrescribir con la variable de entorno VITE_AUTH_API_URL.
+export const AUTH_API_URL =
+  import.meta.env.VITE_AUTH_API_URL ??
+  'https://6a65c54106b3848d4b86d664.mockapi.io/api/v1';
 
 // Cantidad de tarjetas que se muestran al pulsar "Mostrar más".
 export const CARDS_PER_PAGE = 3;

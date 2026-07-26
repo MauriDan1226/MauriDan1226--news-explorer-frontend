@@ -54,9 +54,8 @@ function App() {
 
   async function handleRegister(values) {
     try {
-      await register(values);
-      // Tras registrarse, iniciamos sesión automáticamente.
-      const user = await login({ email: values.email, password: values.password });
+      // register() inicia sesión automáticamente y devuelve el usuario.
+      const user = await register(values);
       setCurrentUser(user);
       setIsLoggedIn(true);
       handleClosePopup();
