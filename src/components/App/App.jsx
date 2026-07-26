@@ -5,35 +5,79 @@ import Main from '../Main/Main.jsx';
 import SavedNews from '../SavedNews/SavedNews.jsx';
 import Footer from '../Footer/Footer.jsx';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.jsx';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import { ROUTES } from '../../utils/constants.js';
 import { exampleArticles } from '../../utils/mockArticles.js';
+import { register, login, logout, getCurrentUser } from '../../utils/auth.js';
 import './App.css';
 
-// Componente raíz (funcional). Mantiene el estado global mínimo de la maqueta
-// y compone el layout: Header + rutas + Footer + popup de autenticación.
+// Componente raíz (funcional). Mantiene el estado de sesión y compone el layout:
+// Header + rutas (con ruta protegida) + Footer + popup de autenticación.
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // La sesión se restaura de forma síncrona para no redirigir por error al
+  // recargar en una ruta protegida.
+  const [currentUser, setCurrentUser] = useState(getCurrentUser);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => getCurrentUser() !== null);
   const [activePopup, setActivePopup] = useState(null); // 'signin' | 'signup' | null
+  const [authError, setAuthError] = useState('');
   const [isLoading] = useState(false);
-  // Datos de ejemplo del diseño para poblar la maqueta (Etapa 1.1).
+  // Datos de ejemplo del diseño para poblar la maqueta.
   const [articles] = useState(exampleArticles);
   const [savedArticles] = useState(exampleArticles);
 
-  function handleOpenPopup(name) {
+  function openPopup(name) {
+    setAuthError('');
     setActivePopup(name);
   }
 
   function handleClosePopup() {
     setActivePopup(null);
+    setAuthError('');
+  }
+
+  function handleSwitchPopup() {
+    setAuthError('');
+    setActivePopup((prev) => (prev === 'signin' ? 'signup' : 'signin'));
+  }
+
+  async function handleLogin(values) {
+    try {
+      const user = await login(values);
+      setCurrentUser(user);
+      setIsLoggedIn(true);
+      handleClosePopup();
+    } catch (error) {
+      setAuthError(error.message);
+    }
+  }
+
+  async function handleRegister(values) {
+    try {
+      await register(values);
+      // Tras registrarse, iniciamos sesión automáticamente.
+      const user = await login({ email: values.email, password: values.password });
+      setCurrentUser(user);
+      setIsLoggedIn(true);
+      handleClosePopup();
+    } catch (error) {
+      setAuthError(error.message);
+    }
+  }
+
+  function handleLogout() {
+    logout();
+    setIsLoggedIn(false);
+    setCurrentUser(null);
   }
 
   return (
     <div className="page">
       <Header
         isLoggedIn={isLoggedIn}
-        onSignInClick={() => handleOpenPopup('signin')}
-        onSignOutClick={() => setIsLoggedIn(false)}
+        userName={currentUser?.name}
+        onSignInClick={() => openPopup('signin')}
+        onSignOutClick={handleLogout}
       />
 
       <Routes>
@@ -45,7 +89,15 @@ function App() {
         />
         <Route
           path={ROUTES.SAVED_NEWS}
-          element={<SavedNews isLoggedIn={isLoggedIn} savedArticles={savedArticles} />}
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <SavedNews
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+                userName={currentUser?.name}
+              />
+            </ProtectedRoute>
+          }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -55,7 +107,11 @@ function App() {
       <PopupWithForm
         name={activePopup}
         isOpen={activePopup !== null}
+        authError={authError}
         onClose={handleClosePopup}
+        onSwitch={handleSwitchPopup}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
       />
     </div>
   );

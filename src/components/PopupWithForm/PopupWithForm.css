@@ -106,8 +106,16 @@
   color: var(--color-error);
 }
 
+.popup__auth-error {
+  margin: 4px 0 0;
+  font-family: var(--font-alt);
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--color-error);
+}
+
 .popup__submit {
-  margin-top: 8px;
+  margin-top: 18px;
   padding: 20px 0;
   border-radius: 100px;
   font-family: var(--font-primary);
@@ -121,6 +129,17 @@
 .popup__submit:hover {
   background-color: var(--color-accent-hover);
   opacity: 1;
+}
+
+/* Estado deshabilitado mientras el formulario no es válido. */
+.popup__submit:disabled {
+  color: var(--color-gray);
+  background-color: var(--color-gray-light);
+  cursor: not-allowed;
+}
+
+.popup__submit:disabled:hover {
+  background-color: var(--color-gray-light);
 }
 
 .popup__switch {

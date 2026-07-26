@@ -5,7 +5,7 @@ import './Navigation.css';
 
 // Menú de navegación. El enlace "Artículos guardados" solo aparece con sesión
 // iniciada. El botón alterna entre iniciar y cerrar sesión.
-function Navigation({ isLoggedIn, onSignInClick, onSignOutClick }) {
+function Navigation({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
   const linkClass = ({ isActive }) =>
     `navigation__link link${isActive ? ' navigation__link_active' : ''}`;
 
@@ -31,8 +31,9 @@ function Navigation({ isLoggedIn, onSignInClick, onSignOutClick }) {
             type="button"
             className="navigation__auth-button button"
             onClick={isLoggedIn ? onSignOutClick : onSignInClick}
+            aria-label={isLoggedIn ? 'Cerrar sesión' : 'Iniciar sesión'}
           >
-            {isLoggedIn ? 'Cerrar sesión' : 'Iniciar sesión'}
+            {isLoggedIn ? userName || 'Cerrar sesión' : 'Iniciar sesión'}
             {isLoggedIn && (
               <img
                 className="navigation__auth-icon"

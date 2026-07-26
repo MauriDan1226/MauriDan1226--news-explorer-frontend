@@ -4,7 +4,7 @@ import { ROUTES } from '../../utils/constants.js';
 import './Header.css';
 
 // Encabezado presente en todas las páginas: logo + menú de navegación.
-function Header({ isLoggedIn, onSignInClick, onSignOutClick }) {
+function Header({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
   return (
     <header className="header">
       <div className="header__container container">
@@ -13,6 +13,7 @@ function Header({ isLoggedIn, onSignInClick, onSignOutClick }) {
         </Link>
         <Navigation
           isLoggedIn={isLoggedIn}
+          userName={userName}
           onSignInClick={onSignInClick}
           onSignOutClick={onSignOutClick}
         />
