@@ -3,10 +3,10 @@ import NewsCardList from '../NewsCardList/NewsCardList.jsx';
 import './SavedNews.css';
 
 // Página de artículos guardados (ruta "/saved-news").
-function SavedNews({ savedArticles = [], isLoggedIn = true }) {
+function SavedNews({ savedArticles = [], isLoggedIn = true, userName }) {
   return (
     <main className="saved-news">
-      <SavedNewsHeader savedArticles={savedArticles} />
+      <SavedNewsHeader savedArticles={savedArticles} userName={userName} />
 
       <section className="saved-news__results" aria-label="Artículos guardados">
         <div className="saved-news__container container">

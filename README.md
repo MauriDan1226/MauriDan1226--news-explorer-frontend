@@ -6,8 +6,10 @@ de noticias) y **guardarlas** en una cuenta personal. Este repositorio contiene 
 
 ## 🔗 Demo
 
-> _Pendiente de desplegar._ Se publicará en Vercel/Render y el enlace se colocará aquí.
-> (Ej.: `https://news-explorer-tuusuario.vercel.app`)
+**https://mauri-dan1226-news-explorer-fronten.vercel.app/**
+
+Puedes registrar una cuenta (registro/login funcionan contra una API de mockapi.io)
+y acceder a la página protegida de artículos guardados.
 
 ## 🛠️ Tecnologías
 
