@@ -1,0 +1,104 @@
+/* ==========================================================================
+   index.css — Estilos globales
+   - Importa normalize (vendor) para resetear estilos por defecto del navegador.
+   - Importa las fuentes @font-face (vendor). Descomenta cuando agregues los
+     archivos .woff en src/vendor/fonts/ (ver src/vendor/fonts/fonts.css).
+   - Define variables de diseño y la clase base .page (BEM).
+   Solo debe contener estilos globales/reutilizables, NO de componentes.
+   ========================================================================== */
+
+@import './vendor/normalize.css';
+@import './vendor/fonts/fonts.css';
+
+:root {
+  /* Colores */
+  --color-black: #1a1b22;
+  --color-white: #ffffff;
+  --color-gray: #b6bcbf;
+  --color-gray-light: #d1d2d6;
+  --color-accent: #2f71e5;
+  --color-accent-hover: #347eff;
+  --color-error: #ff0000;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Tipografías del UI Kit (con fallbacks del sistema hasta cargar los .woff).
+     Roles según el diseño de Figma:
+       - primary: Roboto        -> navegación, botones, subtítulos, UI general
+       - title:   Roboto Slab   -> logo y títulos (hero, secciones, tarjetas)
+       - text:    Source Sans Pro -> fecha, texto y fuente de las NewsCard
+       - alt:     Inter         -> etiquetas de formulario y detalles pequeños */
+  --font-primary: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  --font-title: 'Roboto Slab', 'Times New Roman', serif;
+  --font-text: 'Source Sans Pro', 'Segoe UI', Arial, sans-serif;
+  --font-alt: 'Inter', 'Segoe UI', Arial, sans-serif;
+
+  /* Layout */
+  --max-width: 1440px;
+  --transition-fast: 0.2s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Bloque base de la página (BEM) */
+.page {
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenedor reutilizable con márgenes laterales responsivos */
+.container {
+  width: 100%;
+  padding-inline: 104px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-inline: 40px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+/* Utilidad: eliminar estilos por defecto de listas */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Utilidad: botones/enlaces sin estilos por defecto */
+.button {
+  border: none;
+  cursor: pointer;
+  /* Usar el longhand (no el shorthand `background`) para no resetear
+     background-image en botones que usan un icono SVG de fondo. */
+  background-color: transparent;
+  font-family: inherit;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}

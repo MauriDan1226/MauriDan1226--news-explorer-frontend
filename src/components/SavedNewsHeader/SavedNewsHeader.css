@@ -1,0 +1,65 @@
+/* SavedNewsHeader — cabecera sobre fondo blanco de la página de guardados. */
+
+.saved-news-header {
+  background-color: var(--color-white);
+}
+
+.saved-news-header__container {
+  padding-top: 40px;
+  padding-bottom: 56px;
+}
+
+.saved-news-header__subtitle {
+  margin: 0 0 28px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  color: var(--color-black);
+}
+
+.saved-news-header__title {
+  margin: 0 0 30px;
+  max-width: 640px;
+  font-family: var(--font-title);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-black);
+}
+
+.saved-news-header__keywords {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--color-black);
+}
+
+.saved-news-header__keywords-bold {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+  .saved-news-header__title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .saved-news-header__container {
+    padding-top: 8px;
+    padding-bottom: 32px;
+  }
+
+  .saved-news-header__title {
+    font-size: 30px;
+  }
+
+  .saved-news-header__keywords {
+    font-size: 16px;
+  }
+}
