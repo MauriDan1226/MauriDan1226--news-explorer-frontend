@@ -1,11 +1,17 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import { ROUTES } from '../../utils/constants.js';
 import logoutIcon from '../../images/icon-logout.svg';
 import './Navigation.css';
 
-// Menú de navegación. El enlace "Artículos guardados" solo aparece con sesión
-// iniciada. El botón alterna entre iniciar y cerrar sesión.
-function Navigation({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
+// Menú de navegación con dos estados:
+// - Sin sesión: solo el botón "Iniciar sesión".
+// - Con sesión: enlace "Artículos guardados" y botón para cerrar sesión
+//   (muestra el nombre del usuario junto al icono de salida).
+function Navigation({ onSignInClick, onSignOutClick }) {
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+
   const linkClass = ({ isActive }) =>
     `navigation__link link${isActive ? ' navigation__link_active' : ''}`;
 
@@ -33,7 +39,7 @@ function Navigation({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
             onClick={isLoggedIn ? onSignOutClick : onSignInClick}
             aria-label={isLoggedIn ? 'Cerrar sesión' : 'Iniciar sesión'}
           >
-            {isLoggedIn ? userName || 'Cerrar sesión' : 'Iniciar sesión'}
+            {isLoggedIn ? currentUser?.name || 'Cerrar sesión' : 'Iniciar sesión'}
             {isLoggedIn && (
               <img
                 className="navigation__auth-icon"

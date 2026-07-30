@@ -2,18 +2,18 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.jsx';
 import NewsCardList from '../NewsCardList/NewsCardList.jsx';
 import './SavedNews.css';
 
-// Página de artículos guardados (ruta "/saved-news").
-function SavedNews({ savedArticles = [], isLoggedIn = true, userName }) {
+// Página de artículos guardados (ruta protegida "/saved-news").
+function SavedNews({ savedArticles = [], onDeleteArticle }) {
   return (
     <main className="saved-news">
-      <SavedNewsHeader savedArticles={savedArticles} userName={userName} />
+      <SavedNewsHeader savedArticles={savedArticles} />
 
       <section className="saved-news__results" aria-label="Artículos guardados">
         <div className="saved-news__container container">
           <NewsCardList
             articles={savedArticles}
-            isLoggedIn={isLoggedIn}
             variant="saved"
+            onDeleteArticle={onDeleteArticle}
           />
         </div>
       </section>

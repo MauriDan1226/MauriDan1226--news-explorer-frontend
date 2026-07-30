@@ -59,14 +59,18 @@ solo expone las variables que empiezan por `VITE_`:
 | Variable             | Descripción                                                        |
 | -------------------- | ------------------------------------------------------------------ |
 | `VITE_NEWS_API_KEY`  | Clave de la API de noticias. Regístrate gratis en https://newsapi.org y copia tu API key. |
-| `VITE_AUTH_API_URL`  | URL base de la API de autenticación (registro/login). Temporalmente se puede crear en https://mockapi.io |
+| `VITE_MAIN_API_URL`  | URL base del back-end propio. Opcional: si se omite se usa el servidor de producción. |
 
 Ejemplo de `.env`:
 
 ```env
 VITE_NEWS_API_KEY=tu_api_key_de_newsapi
-VITE_AUTH_API_URL=https://xxxxxxxx.mockapi.io/api/v1
+VITE_MAIN_API_URL=http://localhost:3000
 ```
+
+> El back-end del proyecto está desplegado en
+> **https://news-explorer-api.chickenkiller.com**
+> ([repositorio](https://github.com/MauriDan1226/-news-explorer-backend)).
 
 > ⚠️ El archivo `.env` **no** se sube al repositorio (está en `.gitignore`). Nunca
 > publiques tus claves.

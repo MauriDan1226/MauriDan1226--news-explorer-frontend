@@ -16,6 +16,8 @@ export const exampleArticles = [
     date: '16 de marzo de 2020',
     title: 'Los científicos no saben por qué la estrella polar es tan extraña',
     text: 'Los seres humanos se han basado durante mucho tiempo en el cielo estrellado para adentrarse hacia nuevas fronteras, navegar hasta el fin del mundo y encontrar el camino de vuelta.',
+    imageUrl: 'https://images.unsplash.com/photo-1532978379173-523e16f371f9',
+    link: 'https://www.treehugger.com/polaris-north-star',
     source: 'treehugger',
   },
   {
@@ -25,6 +27,8 @@ export const exampleArticles = [
     date: '4 de noviembre de 2020',
     title: 'El Grand Teton renueva el histórico Camino de la Cresta',
     text: 'La reapertura de los senderos de la Cascada y del Cañón de la Muerte en sus picos marcó el primer paso en la realización de un ambicioso plan de conservación.',
+    imageUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306',
+    link: 'https://www.nationalparkstraveler.org/grand-teton-crest-trail',
     source: 'National parks traveler',
   },
   {
@@ -34,6 +38,8 @@ export const exampleArticles = [
     date: '19 de octubre de 2020',
     title: 'Fotos nostálgicas hechas por turistas en los parques nacionales de EE. UU.',
     text: 'Løvevild Golman y Helle Løvevild Golman son exploradores de National Geographic y fotógrafos de conservación que acaban de completar un proyecto y un libro.',
+    imageUrl: 'https://images.unsplash.com/photo-1533167649158-6d508895b680',
+    link: 'https://www.nationalgeographic.com/nostalgic-photos-national-parks',
     source: 'national geographic',
   },
   {
@@ -43,6 +49,8 @@ export const exampleArticles = [
     date: '19 de febrero de 2019',
     title: 'La naturaleza te hace mejor',
     text: 'Milenios atrás ya nos percatamos de ello: el sonido del océano, los aromas de un bosque, la forma en que la luz del sol moteada baila entre las hojas.',
+    imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e',
+    link: 'https://www.nationalgeographic.com/nature-makes-you-better',
     source: 'national geographic',
   },
   {
@@ -52,6 +60,8 @@ export const exampleArticles = [
     date: '30 de enero de 2019',
     title: 'Todo el mundo necesita un lugar de reflexión en la naturaleza',
     text: 'Desde que leí el influyente libro de Richard Louv, "El último niño en el bosque", la idea de tener un "lugar de reflexión" especial se me ha quedado grabada.',
+    imageUrl: 'https://images.unsplash.com/photo-1439853949127-fa647821eba0',
+    link: 'https://www.nationalgeographic.com/sit-spot-nature',
     source: 'national geographic',
   },
 ];

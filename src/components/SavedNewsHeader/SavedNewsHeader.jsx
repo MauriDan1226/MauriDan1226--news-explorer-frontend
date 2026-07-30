@@ -1,19 +1,36 @@
+import { useContext } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import './SavedNewsHeader.css';
 
-// Construye el texto de palabras clave al estilo del diseño:
-// "Naturaleza, Yellowstone, y 2 más".
-function formatKeywords(keywords) {
-  if (keywords.length === 0) return 'Aún no hay palabras clave';
-  if (keywords.length <= 2) return keywords.join(', ');
-  const rest = keywords.length - 2;
-  return `${keywords[0]}, ${keywords[1]}, y ${rest} más`;
+// Ordena las palabras clave por popularidad (de más a menos artículos) y
+// construye el texto según la cantidad:
+// - 3 o menos: se muestran todas.
+// - más de 3: las dos primeras y el número de palabras clave restantes.
+export function formatKeywords(articles) {
+  const counts = new Map();
+  articles.forEach(({ keyword }) => {
+    if (!keyword) return;
+    counts.set(keyword, (counts.get(keyword) || 0) + 1);
+  });
+
+  const sorted = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([keyword]) => keyword);
+
+  if (sorted.length === 0) return 'Aún no hay palabras clave';
+  if (sorted.length <= 3) return sorted.join(', ');
+
+  const rest = sorted.length - 2;
+  return `${sorted[0]}, ${sorted[1]} y ${rest} más`;
 }
 
 // Cabecera de la página de guardados: resumen y palabras clave.
-function SavedNewsHeader({ savedArticles = [], userName = 'Mauricio' }) {
+function SavedNewsHeader({ savedArticles = [] }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const count = savedArticles.length;
   const plural = count === 1 ? 'artículo guardado' : 'artículos guardados';
-  const keywords = [...new Set(savedArticles.map((a) => a.keyword).filter(Boolean))];
+  const userName = currentUser?.name || 'Usuario';
 
   return (
     <section className="saved-news-header">
@@ -25,7 +42,7 @@ function SavedNewsHeader({ savedArticles = [], userName = 'Mauricio' }) {
         <p className="saved-news-header__keywords">
           Por palabras clave:{' '}
           <span className="saved-news-header__keywords-bold">
-            {formatKeywords(keywords)}
+            {formatKeywords(savedArticles)}
           </span>
         </p>
       </div>

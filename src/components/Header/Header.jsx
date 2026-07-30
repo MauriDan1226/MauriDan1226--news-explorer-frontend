@@ -3,8 +3,9 @@ import Navigation from '../Navigation/Navigation.jsx';
 import { ROUTES } from '../../utils/constants.js';
 import './Header.css';
 
-// Encabezado presente en todas las páginas: logo + menú de navegación.
-function Header({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
+// Encabezado presente en todas las páginas: logo y menú de navegación.
+// El estado de la sesión lo obtiene Navigation del contexto global.
+function Header({ onSignInClick, onSignOutClick }) {
   return (
     <header className="header">
       <div className="header__container container">
@@ -12,8 +13,6 @@ function Header({ isLoggedIn, userName, onSignInClick, onSignOutClick }) {
           NewsExplorer
         </Link>
         <Navigation
-          isLoggedIn={isLoggedIn}
-          userName={userName}
           onSignInClick={onSignInClick}
           onSignOutClick={onSignOutClick}
         />

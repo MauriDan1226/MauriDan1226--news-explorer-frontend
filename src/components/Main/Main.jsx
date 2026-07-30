@@ -5,7 +5,13 @@ import Preloader from '../Preloader/Preloader.jsx';
 import './Main.css';
 
 // Página principal (ruta "/"): hero con buscador, resultados y sección About.
-function Main({ isLoading, isLoggedIn, articles }) {
+function Main({
+  isLoading,
+  articles,
+  savedArticles = [],
+  onSaveArticle,
+  onDeleteArticle,
+}) {
   const hasResults = Array.isArray(articles) && articles.length > 0;
 
   return (
@@ -29,8 +35,10 @@ function Main({ isLoading, isLoggedIn, articles }) {
             ) : (
               <NewsCardList
                 articles={articles}
-                isLoggedIn={isLoggedIn}
                 variant="search"
+                savedArticles={savedArticles}
+                onSaveArticle={onSaveArticle}
+                onDeleteArticle={onDeleteArticle}
               />
             )}
           </div>
