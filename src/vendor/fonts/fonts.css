@@ -1,0 +1,94 @@
+/* ==========================================================================
+   fonts.css — Fuentes de terceros conectadas con @font-face (WOFF y WOFF2)
+   --------------------------------------------------------------------------
+   Fuentes del UI Kit de News Explorer (confirmadas en el .fig):
+     Roboto, Roboto Slab, Source Sans Pro e Inter.
+   Archivos open-source (OFL / Apache) incluidos en esta misma carpeta.
+   Se ofrece woff2 (moderno, más ligero) con woff como alternativa, y
+   `font-display: swap` para evitar texto invisible mientras cargan.
+   ========================================================================== */
+
+/* ---------- Roboto (texto de la interfaz) ---------- */
+@font-face {
+  font-family: 'Roboto';
+  src: url('./roboto-latin-400-normal.woff2') format('woff2'),
+    url('./roboto-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./roboto-latin-500-normal.woff2') format('woff2'),
+    url('./roboto-latin-500-normal.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./roboto-latin-700-normal.woff2') format('woff2'),
+    url('./roboto-latin-700-normal.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Roboto Slab (títulos) ---------- */
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('./roboto-slab-latin-400-normal.woff2') format('woff2'),
+    url('./roboto-slab-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('./roboto-slab-latin-700-normal.woff2') format('woff2'),
+    url('./roboto-slab-latin-700-normal.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Source Sans Pro (fecha y texto de las tarjetas) ---------- */
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./source-sans-pro-latin-400-normal.woff2') format('woff2'),
+    url('./source-sans-pro-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./source-sans-pro-latin-700-normal.woff2') format('woff2'),
+    url('./source-sans-pro-latin-700-normal.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Inter (etiquetas de formulario / detalles) ---------- */
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-latin-400-normal.woff2') format('woff2'),
+    url('./inter-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-latin-700-normal.woff2') format('woff2'),
+    url('./inter-latin-700-normal.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

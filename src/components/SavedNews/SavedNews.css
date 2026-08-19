@@ -1,0 +1,22 @@
+/* SavedNews — página de artículos guardados. */
+
+.saved-news {
+  flex-grow: 1;
+  background-color: var(--color-white);
+}
+
+.saved-news__results {
+  background-color: #f5f6f7;
+}
+
+.saved-news__container {
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+@media screen and (max-width: 620px) {
+  .saved-news__container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}

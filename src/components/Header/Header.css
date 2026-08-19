@@ -1,0 +1,38 @@
+/* Header — encabezado con logo y navegación. */
+
+.header {
+  width: 100%;
+  /* Fondo oscuro para que el logo blanco sea legible en todas las páginas.
+     En la home enlaza visualmente con el hero (misma tonalidad). */
+  background-color: var(--color-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+.header__logo {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 620px) {
+  .header__container {
+    min-height: 56px;
+  }
+
+  .header__logo {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,42 @@
+/* InfoTooltip — confirmación de registro. Reutiliza el overlay de .popup. */
+
+.info-tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 34px 36px 28px;
+}
+
+.info-tooltip__title {
+  margin: 0 0 14px;
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-black);
+}
+
+.info-tooltip__link {
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-accent);
+  background-color: transparent;
+}
+
+.info-tooltip__link:hover {
+  color: var(--color-accent-hover);
+  opacity: 1;
+}
+
+@media screen and (max-width: 620px) {
+  .info-tooltip {
+    padding: 16px 16px 24px;
+  }
+
+  .info-tooltip__title {
+    font-size: 20px;
+  }
+}
